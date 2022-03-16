@@ -1,7 +1,7 @@
-function Loans() {
+function List() {
     return (
         <h1>Loans</h1>
     );
 }
 
-export default Loans;
+export default List;

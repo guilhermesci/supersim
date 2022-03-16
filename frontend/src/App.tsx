@@ -3,8 +3,8 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Loans from 'pages/Loans';
-import Loan from 'pages/Loan';
+import List from 'pages/Loan/List';
+import Form from 'pages/Loan/Form';
 import Navbar from "components/Navbar";
 
 function App() {
@@ -12,9 +12,9 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Loans />} />
+        <Route path="/" element={<List />} />
         <Route path="/loan">
-          <Route path=":loanId" element={<Loan />} />
+          <Route path=":loanId" element={<Form />} />
         </Route>
       </Routes>
     </BrowserRouter>
