@@ -3,8 +3,8 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import List from 'pages/Loan/List';
-import Form from 'pages/Loan/Form';
+import List from 'pages/List';
+import Form from 'pages/Form';
 import Navbar from "components/Navbar";
 
 function App() {
@@ -13,9 +13,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<List />} />
-        <Route path="/loan">
-          <Route path=":loanId" element={<Form />} />
-        </Route>
+        <Route path="/client" element={<Form />} />
       </Routes>
     </BrowserRouter>
   );
