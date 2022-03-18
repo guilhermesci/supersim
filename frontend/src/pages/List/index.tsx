@@ -1,6 +1,8 @@
+import Pagination from "components/Pagination";
+
 function List() {
     return (
-        <h1>Loans</h1>
+        <Pagination/>
     );
 }
 
