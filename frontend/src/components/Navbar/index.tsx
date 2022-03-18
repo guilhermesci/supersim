@@ -1,4 +1,5 @@
 import {ReactComponent as GithubIcon} from 'assets/img/github.svg';
+import { Link } from 'react-router-dom';
 import './styles.css'
 
 function Navbar(){
@@ -6,7 +7,7 @@ function Navbar(){
         <header>
         <nav className="container">
             <div className="supersim-nav-content">
-                <h1>SuperSim</h1>
+                <Link to='/'><h1>SuperSim</h1></Link>
                 <a href="https://github.com/guilhermesci/supersim" target="_blank" rel="noreferrer">
                     <div className="supersim-contact-container">
                         <GithubIcon />
