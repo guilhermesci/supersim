@@ -1,0 +1,21 @@
+-- client exemples
+insert into client (cpf,name,email,income) values ('50315647094','Heloísa','heloisa@gmail.com',1200);
+insert into client (cpf,name,email,income) values ('73281272010','Vitória','vitoria@gmail.com',500);
+insert into client (cpf,name,email,income) values ('75907813040','Sara','sara@gmail.com',600);
+insert into client (cpf,name,email,income) values ('63826837010','Alessandra','alessandra@gmail.com',890);
+insert into client (cpf,name,email,income) values ('30912155043','Apólo','apolo@gmail.com',1700);
+insert into client (cpf,name,email,income) values ('01513419072','Mariana','mariana@gmail.com',300);
+insert into client (cpf,name,email,income) values ('12790812012','Vitor','vitor@gmail.com',700);
+insert into client (cpf,name,email,income) values ('84981531079','Isaac','isaac@gmail.com',850);
+insert into client (cpf,name,email,income) values ('82935214064','Leonardo','leonardo@gmail.com',653);
+insert into client (cpf,name,email,income) values ('73436255009','Calebe','calebe@gmail.com',720);
+insert into client (cpf,name,email,income) values ('76755109096','Letícia','leticia@gmail.com',1250);
+insert into client (cpf,name,email,income) values ('94893219073','Enzo','enzo@gmail.com',1450);
+insert into client (cpf,name,email,income) values ('46725802028','Pedro','pedro@gmail.com',960);
+insert into client (cpf,name,email,income) values ('57999002003','Afonso','afonso@gmail.com',1100);
+insert into client (cpf,name,email,income) values ('15015634080','Fabrício','fabricio@gmail.com',1800);
+insert into client (cpf,name,email,income) values ('74969518033','Laura','laura@gmail.com',1670);
+insert into client (cpf,name,email,income) values ('47246784020','Pedro Henrique','pedrohenrique@gmail.com',1420);
+insert into client (cpf,name,email,income) values ('00888679009','Leonardo','leonardo@gmail.com',1300);
+insert into client (cpf,name,email,income) values ('39736181006','Hugo','hugo@gmail.com',900);
+insert into client (cpf,name,email,income) values ('24125617023','José','jose@gmail.com',1245);
