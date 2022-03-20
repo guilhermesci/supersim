@@ -1,5 +1,6 @@
 package br.com.supersim.backend.entity;
 
+import br.com.supersim.backend.dto.ClientDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,4 +30,12 @@ public class Client {
 
     @Column(nullable = false)
     private Double income;
+
+    public Client(ClientDTO clientDTO) {
+        this.id = clientDTO.getId();
+        this.cpf = clientDTO.getCpf();
+        this.name = clientDTO.getName();
+        this.email = clientDTO.getEmail();
+        this.income = clientDTO.getIncome();
+    }
 }
