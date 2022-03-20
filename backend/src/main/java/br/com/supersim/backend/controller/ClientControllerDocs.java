@@ -7,9 +7,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
 
 @Api("Manages Clients's Loan")
 public interface ClientControllerDocs {
@@ -32,7 +32,7 @@ public interface ClientControllerDocs {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success list of all clients created."),
     })
-    List<ClientDTO> listClients();
+    Page<ClientDTO> listClients(Pageable pageable);
 
     @ApiOperation(value = "Delete a client found by a given valid Id")
     @ApiResponses(value = {

@@ -6,11 +6,12 @@ import br.com.supersim.backend.exception.ClientNotFoundException;
 import br.com.supersim.backend.service.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/clients")
@@ -31,8 +32,8 @@ public class ClientController implements ClientControllerDocs {
     }
 
     @GetMapping
-    public List<ClientDTO> listClients() {
-        return clientService.listAll();
+    public Page<ClientDTO> listClients(Pageable pageable) {
+        return clientService.listAll(pageable);
     }
 
     @DeleteMapping("/{id}")

@@ -5,10 +5,14 @@ import br.com.supersim.backend.entity.Client;
 import br.com.supersim.backend.exception.ClientAlreadyCreatedException;
 import br.com.supersim.backend.exception.ClientNotFoundException;
 import br.com.supersim.backend.repository.ClientRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,11 +37,9 @@ public class ClientService {
         return new ClientDTO(foundClient);
     }
 
-    public List<ClientDTO> listAll() {
-        return clientRepository.findAll()
-                .stream()
-                .map(x -> new ClientDTO(x))
-                .collect(Collectors.toList());
+    @Transactional(readOnly = true)
+    public Page<ClientDTO> listAll(Pageable pageable) {
+        return clientRepository.findAll(pageable).map(x -> new ClientDTO(x));
     }
 
     public void deleteById(Long id) throws ClientNotFoundException {
