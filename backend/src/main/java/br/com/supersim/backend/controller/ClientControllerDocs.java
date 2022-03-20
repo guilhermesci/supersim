@@ -10,16 +10,25 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.validation.Valid;
 
 @Api("Manages Clients's Loan")
 public interface ClientControllerDocs {
 
-    @ApiOperation(value = "Client creation operation")
+    @ApiOperation(value = "Returns a list of all clients created")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Success on client creation."),
-            @ApiResponse(code = 400, message = "Missing required fields or wrong field range value.")
+            @ApiResponse(code = 200, message = "Success list of all clients created."),
     })
-    ClientDTO createClient(ClientDTO clientDTO) throws ClientAlreadyCreatedException;
+    Page<ClientDTO> listClients(Pageable pageable);
+
+    @ApiOperation(value = "Returns client found by a given id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success client found."),
+            @ApiResponse(code = 404, message = "Client with given id not found.")
+    })
+    ClientDTO findById(@PathVariable Long id) throws ClientNotFoundException;
 
     @ApiOperation(value = "Returns client found by a given cpf")
     @ApiResponses(value = {
@@ -28,11 +37,20 @@ public interface ClientControllerDocs {
     })
     ClientDTO findByCpf(@PathVariable String cpf) throws ClientNotFoundException;
 
-    @ApiOperation(value = "Returns a list of all clients created")
+    @ApiOperation(value = "Client creation operation")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success list of all clients created."),
+            @ApiResponse(code = 201, message = "Success on client creation."),
+            @ApiResponse(code = 400, message = "Missing required fields or wrong field range value.")
     })
-    Page<ClientDTO> listClients(Pageable pageable);
+    ClientDTO createClient(ClientDTO clientDTO) throws ClientAlreadyCreatedException;
+
+    @ApiOperation(value = "Update a client found by a given valid Id.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Success on client update."),
+            @ApiResponse(code = 400, message = "Missing required fields or wrong field range value."),
+            @ApiResponse(code = 404, message = "Client with given id not found.")
+    })
+    ClientDTO updateById(@PathVariable Long id, @RequestBody @Valid ClientDTO clientDTO) throws ClientNotFoundException;
 
     @ApiOperation(value = "Delete a client found by a given valid Id")
     @ApiResponses(value = {

@@ -14,9 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
@@ -24,11 +22,15 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
 
-    public ClientDTO createClient(ClientDTO clientDTO) throws ClientAlreadyCreatedException {
-        verifyIfIsAlreadyCreated(clientDTO.getCpf());
-        Client client = new Client(clientDTO);
-        Client savedClient = clientRepository.save(client);
-        return new ClientDTO(savedClient);
+    @Transactional(readOnly = true)
+    public Page<ClientDTO> listAll(Pageable pageable) {
+        return clientRepository.findAll(pageable).map(x -> new ClientDTO(x));
+    }
+
+    public ClientDTO findById(Long id) throws ClientNotFoundException {
+        Client foundClient = clientRepository.findById(id)
+                .orElseThrow(() -> new ClientNotFoundException(id));
+        return new ClientDTO(foundClient);
     }
 
     public ClientDTO findByCpf(String cpf) throws ClientNotFoundException {
@@ -37,9 +39,22 @@ public class ClientService {
         return new ClientDTO(foundClient);
     }
 
-    @Transactional(readOnly = true)
-    public Page<ClientDTO> listAll(Pageable pageable) {
-        return clientRepository.findAll(pageable).map(x -> new ClientDTO(x));
+    public ClientDTO createClient(ClientDTO clientDTO) throws ClientAlreadyCreatedException {
+        verifyIfIsAlreadyCreated(clientDTO.getCpf());
+
+        Client client = new Client(clientDTO);
+        Client savedClient = clientRepository.save(client);
+
+        return new ClientDTO(savedClient);
+    }
+
+    public ClientDTO updateById(Long id, ClientDTO clientDTO) throws ClientNotFoundException {
+        verifyIfExists(id);
+
+        Client clientToUpdate = new Client(clientDTO);
+        Client updatedClient = clientRepository.save(clientToUpdate);
+
+        return new ClientDTO(updatedClient);
     }
 
     public void deleteById(Long id) throws ClientNotFoundException {

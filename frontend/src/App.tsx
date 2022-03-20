@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<List />} />
         <Route path="/clients" >
-          <Route path=":clientCpf" element={<Form />} />
+          <Route path=":clientId" element={<Form />} />
         </Route>
       </Routes>
     </BrowserRouter>

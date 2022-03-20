@@ -11,7 +11,7 @@ function ClientCard( { client } : Props) {
         <div>
             <div className="supersim-card-bottom-container">
                 <h3>{client.name}</h3>
-                <Link to={`/clients/${client.cpf}`}>
+                <Link to={`/clients/${client.id}`}>
                     <div className="btn btn-primary supersim-btn">Editar</div>
                 </Link>
             </div>

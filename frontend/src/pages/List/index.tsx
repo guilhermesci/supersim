@@ -3,6 +3,7 @@ import ClientCard from "components/ClientCard";
 import Pagination from "components/Pagination";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ClientPage } from "types/client";
 import { BASE_URL } from "utils/requests";
 
@@ -15,7 +16,7 @@ function List() {
         last: true,
         totalPages: 0,
         totalElements: 0,
-        size: 12,
+        size: 8,
         number: 0,
         first: true,
         numberOfElements: 0,
@@ -23,16 +24,20 @@ function List() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/clients?size=12&page=${pageNumber}&sort=name`)
+        axios.get(`${BASE_URL}/clients?size=${page.size}&page=${pageNumber}&sort=name`)
             .then(response => {
                 const data = response.data as ClientPage;
                 setPage(data);
             });
     }, [pageNumber]);
 
+    const handlePageChange = (newPageNumber : number) => {
+        setPageNumber(newPageNumber);
+    }
+
     return (
         <>
-            <Pagination />
+            <Pagination page={page} onChange={handlePageChange}/>
 
             <div className="container">
                 <div className="row">

@@ -6,7 +6,7 @@ function Form() {
     const params = useParams();
 
     return (
-        <FormCard clientCpf={`${params.clientCpf}`}/>
+        <FormCard clientId={`${params.clientId}`}/>
     );
 }
 

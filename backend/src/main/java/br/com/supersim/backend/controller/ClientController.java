@@ -20,20 +20,30 @@ public class ClientController implements ClientControllerDocs {
 
     private final ClientService clientService;
 
+    @GetMapping
+    public Page<ClientDTO> listClients(Pageable pageable) {
+        return clientService.listAll(pageable);
+    }
+
+    @GetMapping("/{id}")
+    public ClientDTO findById(@PathVariable Long id) throws ClientNotFoundException {
+        return clientService.findById(id);
+    }
+
+    @GetMapping("/cpf/{cpf}")
+    public ClientDTO findByCpf(@PathVariable String cpf) throws ClientNotFoundException {
+        return clientService.findByCpf(cpf);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ClientDTO createClient(@RequestBody @Valid ClientDTO clientDTO) throws ClientAlreadyCreatedException {
         return clientService.createClient(clientDTO);
     }
 
-    @GetMapping("/{cpf}")
-    public ClientDTO findByCpf(@PathVariable String cpf) throws ClientNotFoundException {
-        return clientService.findByCpf(cpf);
-    }
-
-    @GetMapping
-    public Page<ClientDTO> listClients(Pageable pageable) {
-        return clientService.listAll(pageable);
+    @PutMapping("/{id}")
+    public ClientDTO updateById(@PathVariable Long id, @RequestBody @Valid ClientDTO clientDTO) throws ClientNotFoundException {
+        return clientService.updateById(id, clientDTO);
     }
 
     @DeleteMapping("/{id}")
