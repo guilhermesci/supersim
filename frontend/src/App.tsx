@@ -13,7 +13,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<List />} />
-        <Route path="/client" element={<Form />} />
+        <Route path="/clients" >
+          <Route path=":clientCpf" element={<Form />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
+import { Client } from "types/client";
 
-function ClientCard() {
+type Props = {
+    client: Client;
+}
 
-    const client = {name:"Nome Cliente"}
+function ClientCard( { client } : Props) {
 
     return (
         <div>
             <div className="supersim-card-bottom-container">
                 <h3>{client.name}</h3>
-                <Link to='/client'>
-                    <div className="btn btn-primary supersim-btn">Exibir Empréstimos</div>
+                <Link to={`/clients/${client.cpf}`}>
+                    <div className="btn btn-primary supersim-btn">Editar</div>
                 </Link>
             </div>
         </div>
