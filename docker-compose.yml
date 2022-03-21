@@ -1,0 +1,47 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres
+    container_name: "postgres-container"
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    networks:
+      - network-backend
+
+  backend:
+    depends_on: 
+      - db
+    image: "guilhermesci/springboot-supersim"
+    container_name: "backend-supersim-container"
+    environment:
+      - DB_DRIVER=postgresql
+      - DB_HOSTNAME=postgres-container
+      - DB_PORT=5432
+      - DB_DATABASE=postgres
+      - DB_USER=postgres
+      - DB_PASS=postgres
+    ports:
+      - "8080:8080"
+    networks:
+      - network-backend
+      - network-frontend
+
+  frontend:
+    depends_on:
+      - backend
+    image: "guilhermesci/react-supersim"
+    container_name: "frontend-supersim-container"
+    ports:
+      - "3000:3000"
+    networks:
+      - network-frontend
+
+networks:
+  network-backend:
+  network-frontend:
