@@ -56,6 +56,8 @@ Em seguida, acesse o diretório `backend` e execute o comando:
 
 A aplicação estará funcionando no endereço [http://localhost:3000/](http://localhost:3000/).
 
+A documentação da API estará disponível em [http://localhost:8080/swagger-ui.html/](http://localhost:8080/swagger-ui.html/).
+
 ## Execução Tests BackEnd
 
 No diretório `backend` e execute o comando:
