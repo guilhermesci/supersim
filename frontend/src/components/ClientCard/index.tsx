@@ -14,6 +14,10 @@ function ClientCard( { client } : Props) {
                 <Link to={`/clients/${client.id}`}>
                     <div className="btn btn-primary supersim-btn">Editar</div>
                 </Link>
+                <br/>
+                <Link to={`/client/delete/${client.id}`}>
+                    <div className="btn btn-primary supersim-btn">Excluir</div>
+                </Link>
             </div>
         </div>
     );

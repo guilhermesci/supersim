@@ -8,6 +8,7 @@ import Form from 'pages/Form';
 import Navbar from "components/Navbar";
 import Home from "pages/Home";
 import FormCreate from "pages/FormCreate";
+import FormDelete from "pages/FormDelete";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/client" element={<FormCreate />} />
+        <Route path="/client/delete" >
+          <Route path=":clientId" element={<FormDelete />} />
+        </Route>
         <Route path="/clients" element={<List />} />
         <Route path="/clients" >
           <Route path=":clientId" element={<Form />} />

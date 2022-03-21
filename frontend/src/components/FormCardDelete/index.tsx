@@ -1,17 +1,15 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Client } from 'types/client';
 import { BASE_URL } from 'utils/requests';
-import { validateEmail } from 'utils/validate';
 import './styles.css';
 
 type Props = {
     clientId: string;
 }
 
-function FormCard( { clientId } : Props) {
+function FormCardDelete( { clientId } : Props) {
 
     const navigate = useNavigate();
 
@@ -35,27 +33,12 @@ function FormCard( { clientId } : Props) {
     const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        //const id = client?.id;
-        //const id = clientId;
-        const cpf = (event.target as any).cpf.value;
-        const name = (event.target as any).name.value;
-        const email = (event.target as any).email.value;
-        const income = (event.target as any).income.value;
-
-        if (!validateEmail(email)){
-            return;
-        }
-
         const config: AxiosRequestConfig = {
             baseURL: BASE_URL,
-            method: 'PUT',
+            method: 'DELETE',
             url: `/clients/${clientId}`,
             data: {
-                id: clientId,
-                cpf: cpf,
-                name: name,
-                email: email,
-                income: income
+                id: clientId
             }
         }
 
@@ -68,26 +51,26 @@ function FormCard( { clientId } : Props) {
     return (
         <div className="supersim-form-container">
             <div className="supersim-card-bottom-container">
-                <h3>Editar Cliente</h3>
+                <h3>Excluir Cliente</h3>
                 <form className="supersim-form" onSubmit={handleSubmit}>
                     <div className="form-group supersim-form-group">
                         <label htmlFor="cpf">Cpf</label>
-                        <input type="cpf" className="form-control" id="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)}/>
+                        <input type="cpf" className="form-control" id="cpf" value={cpf}/>
                     </div>
                     <div className="form-group supersim-form-group">
                         <label htmlFor="name">Nome</label>
-                        <input type="name" className="form-control" id="name" value={name} onChange={(e) => setName(e.target.value)}/>
+                        <input type="name" className="form-control" id="name" value={name}/>
                     </div>
                     <div className="form-group supersim-form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="email" className="form-control" id="email" value={email}/>
                     </div>
                     <div className="form-group supersim-form-group">
                         <label htmlFor="income">Renda mensal</label>
-                        <input type="number" className="form-control" id="income" value={income} onChange={(e) => setIncome(e.target.value)}/>
+                        <input type="number" className="form-control" id="income" value={income}/>
                     </div>
                     <div className="supersim-form-btn-container">
-                        <button type="submit" className="btn btn-primary supersim-btn">Salvar</button>
+                        <button type="submit" className="btn btn-primary supersim-btn">Excluir</button>
                     </div>
                 </form >
                 <Link to='/clients'>
@@ -99,4 +82,4 @@ function FormCard( { clientId } : Props) {
     );
 }
 
-export default FormCard;
+export default FormCardDelete;

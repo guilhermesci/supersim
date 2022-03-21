@@ -10,7 +10,7 @@ function Home() {
                         <button className="btn btn-primary supersim-btn mt-3">Cadastrar Cliente</button>
                     </Link>
                     <Link to='/clients'>
-                        <button className="btn btn-primary supersim-btn mt-3">Lista de Clientes</button>
+                        <button className="btn btn-primary supersim-btn mt-3">Listar Clientes</button>
                     </Link>
                 </div>
             </div>
