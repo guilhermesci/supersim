@@ -3,7 +3,6 @@ import ClientCard from "components/ClientCard";
 import Pagination from "components/Pagination";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { ClientPage } from "types/client";
 import { BASE_URL } from "utils/requests";
 
@@ -29,7 +28,7 @@ function List() {
                 const data = response.data as ClientPage;
                 setPage(data);
             });
-    }, [pageNumber]);
+    }, [pageNumber, page.size]);
 
     const handlePageChange = (newPageNumber : number) => {
         setPageNumber(newPageNumber);
