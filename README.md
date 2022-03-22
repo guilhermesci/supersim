@@ -3,7 +3,7 @@
 Essa aplicação foi criada utilizando Java 11 com o framework Spring no _back-end_ e React no _front-end_.
 
 Não possuia nenhuma experiência com React, este é o primeiro projeto que utilizo. 
-Para o desenvolvimento do frontend, tomei como base o repositório https://github.com/acenelio/dsmovie.
+Para o desenvolvimento do frontend, tomei como base o repositório [dsmovie](https://github.com/acenelio/dsmovie).
 
 ## Objetivo
 
