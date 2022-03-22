@@ -7,9 +7,10 @@ Para o desenvolvimento do frontend, tomei como base o repositório https://githu
 
 ## Objetivo
 
-Ao final do projeto teremos uma aplicação que realiza o gerenciamento de clientes e seus empréstimos. Futuramente outras funcionalidades serão adicionadas.
+Ao final do projeto teremos uma aplicação que realiza o gerenciamento de clientes e seus empréstimos.
 
-*No primeiro momento as funcionalidades disponíveis são: Listagem, Cadastro, Edição e Exclusão de Clientes.*
+*No primeiro momento as funcionalidades disponíveis são: Listagem, Cadastro, Edição e Exclusão de Clientes. 
+Futuramente outras funcionalidades serão adicionadas.*
 
 ## Requisitos
 
