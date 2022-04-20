@@ -38,8 +38,9 @@ Acessar o diretório em que estão os arquivos `docker-compose.yml` e `init.sql`
 
 ## Execução FrontEnd | BackEnd
 
-Acessar o diretório `frontend` e executar o comando:
+Acessar o diretório `frontend` e executar os comandos:
 ~~~
+  yarn install
   yarn start
 ~~~
 
